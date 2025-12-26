@@ -25,6 +25,8 @@ local_settings.py
 # Environment variables
 # ======================
 .env
+.env.development
+.env.production
 .env.*
 
 # ======================
@@ -41,3 +43,6 @@ local_settings.py
 .DS_Store
 Thumbs.db
 ativar_env.bat
+# =============================
+*.key
+*.pem

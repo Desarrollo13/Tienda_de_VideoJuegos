@@ -11,24 +11,35 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+# ruta base del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# Determinar entorno:desarrollo o produccion
+# En PythonAnywhere definir DJANGO_PRODUCTION=1 en consola o WSGI
+IS_PRODUCTION = os.environ.get('DJANGO_PRODUCTION') == '1'
+
+# CARGAR VARIABLES DE ENTORNO
+ENV_FILE= Path(__file__).resolve().parent.parent.parent/('.env.production' if IS_PRODUCTION else '.env.development')
+load_dotenv(ENV_FILE)
+
+# seguridad y depuracion
+SECRET_KEY=os.getenv('SECRET_KEY ')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-^bz)#%hdm-@ow4=p5k54)rn%+aivz)(njd3np_+5!20s_=62eo"
+# SECRET_KEY = "django-insecure-^bz)#%hdm-@ow4=p5k54)rn%+aivz)(njd3np_+5!20s_=62eo"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')=='True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 
-# Application definition
+# Aplicaciones intaldas
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -77,16 +88,19 @@ TEMPLATES = [
 WSGI_APPLICATION = "tienda_videojuegos.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# ---------------------------------------------------
+# Base de datos
+# ---------------------------------------------------
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER', ''),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
+        'HOST': os.getenv('DATABASE_HOST', ''),
+        'PORT': os.getenv('DATABASE_PORT', ''),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
