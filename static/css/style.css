@@ -1,0 +1,221 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #198754;
+}
+.footer h6{
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.img-juego {
+  height: 220px;
+  object-fit: cover;
+}
+.juego-card{
+    transition: transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.juego-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.detalle-img{
+    transition: transform 0.3s ease;
+    box-shadow: 0.3s ease;
+}
+.detalle-img:hover{
+   transform: scale(1.05);
+    box-shadow: 0 0.5rem 2rem rgba(0,0,0,.2);
+}
+/* estilos de la table del carrito */
+.table{
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 0.75rem;
+}
+.table td,
+.table th{
+    vertical-align: middle;
+}
+.table tbody tr:hover{
+    background-color: rgba(var(--bs-body-color-rgb),0.02);
+}
+.badge {
+  font-size: 0.65rem;
+}
+
+/* parte responsi para la tabla del carrito  escritorio*/
+@media (min-width:769px) {
+    .carrito-table-wrap .table{
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 6px 10px rgba(0, 0,0, 0.06);
+    }
+    .carrito-row{
+        border-top: 1px solid rgba(0, 0,0, 0.04);
+    }
+    
+}
+/* responsi para Table y Movil */
+/* @media (max-width:769px) {
+    .table thead{
+        display: none;
+    }
+
+} */
+
+/* ===============================
+   RESPONSIVE TABLET + MOBILE
+   =============================== */
+@media (max-width: 768px) {
+
+    /* Ocultar encabezados */
+    .carrito-table-wrap thead {
+        display: none;
+    }
+
+    /* Cada fila se vuelve una tarjeta */
+    .carrito-table-wrap tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+        background-color: var(--bs-body-bg);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Celdas en formato fila */
+    .carrito-table-wrap tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border: none;
+        text-align: right;
+        font-size: 0.9rem;
+    }
+
+    /* Label (izquierda) */
+    .carrito-table-wrap tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6c757d;
+        text-align: left;
+    }
+
+    /* Columna juego (imagen + nombre) */
+    .carrito-table-wrap tbody td[data-label="Juego"] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        text-align: left;
+    }
+
+    .carrito-thumb {
+        width: 100%;
+        max-width: 120px;
+        height: auto;
+        border-radius: 0.5rem;
+    }
+
+    /* Botón eliminar centrado */
+    .carrito-table-wrap tbody td[data-label="Acciones"] {
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   TOASTS (NOTIFICACIONES FLOTANTES) – VISTOSOS
+========================================================= */
+
+/* Tamaño, padding, tipografía y efecto vidrio */
+.toast {
+    opacity: 0.9;
+    /* más visible */
+    backdrop-filter: blur(6px);
+    /* desenfoque más marcado */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    /* sombra más profunda */
+    border-radius: 1rem;
+    /* bordes más redondeados */
+    padding: 1rem 1.5rem;
+    /* más espacio interno */
+    font-size: 1.1rem;
+    /* texto más grande */
+    font-weight: 600;
+    /* más llamativo */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    animation: slideUp 0.5s ease-out;
+    min-width: 300px;
+    /* ancho mínimo */
+    max-width: 400px;
+    /* ancho máximo */
+}
+
+/* Hover: más opaco y ligeramente agrandado */
+.toast:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Animación suave al aparecer */
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 0.95;
+    }
+}
+
+/* =========================================================
+   TOASTS: COLORES DE TEXTO POR TIPO
+========================================================= */
+
+/* Texto negro para toasts informativos y de advertencia */
+.toast.bg-info,
+.toast.bg-warning,
+.toast.bg-success {
+    color: #000 !important;
+}
+
+/* Botón de cierre visible para todos los tipos */
+.toast .btn-close {
+    filter: invert(0) !important;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* Colores de fondo más vivos */
+.toast.bg-success {
+    background-color: #32FF62 !important;
+}
+
+.toast.bg-danger {
+    background-color: #dc3545 !important;
+    color: #fff;
+}
+
+.toast.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.toast.bg-info {
+    background-color: #0062FF !important;
+}

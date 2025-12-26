@@ -1,0 +1,43 @@
+# ======================
+# Python / Django
+# ======================
+__pycache__/
+*.py[cod]
+*.log
+*.pot
+
+# ======================
+# Virtual Env
+# ======================
+env/
+venv/
+.venv/
+
+# ======================
+# Django
+# ======================
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# ======================
+# Environment variables
+# ======================
+.env
+.env.*
+
+# ======================
+# IDEs / Editors
+# ======================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================
+# OS
+# ======================
+.DS_Store
+Thumbs.db
+ativar_env.bat

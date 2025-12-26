@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Noticias{% endblock %}
+
+{% block content %}
+<br>
+<h1 class="mb-4 fw-bold">Noticias de Videojuegos</h1>
+
+<div class="row g-4">
+  {% for noticia in noticias %}
+  <div class="col-md-6">
+    <div class="card h-100 shadow-sm">
+
+      {% if noticia.imagen %}
+      <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="{{ noticia.titulo }}">
+      {% endif %}
+
+      <div class="card-body">
+        <h5 class="card-title">{{ noticia.titulo }}</h5>
+        <p class="card-text text-muted">{{ noticia.resumen }}</p>
+        <a href="{% url 'noticias:detalle' noticia.slug %}" class="btn btn-success btn-sm">
+          Leer más
+        </a>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

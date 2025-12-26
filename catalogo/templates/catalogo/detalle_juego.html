@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{juego.nombre}}{%endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row g-5 aligs-items-start">
+        <!-- columna de izqierda:imagen del juego -->
+        <div class="card shadow-sm border-0 overflow-hidden">
+            <img src="{% static 'img/portadas/' %}{{juego.imagen}}" class="detalle-img rounded-3 img-fluid"
+                alt="Imagen del juego {{juego.nombre}}">
+
+        </div>
+
+    </div>
+    <!-- columna derecha:informacion del jeugo -->
+    <div class="col-12 col-md-8 text-start">
+        <!-- Nombre del juego -->
+        <h1 class="display-5 fw-bold mb-3 text-body">{{juego.nombre}}</h1>
+        <!-- precio destacado -->
+        <div class="mb-4">
+            <h2 class="tex-success fw-bold">{{juego.precio}} $</h2>
+            <small class="text-body-secondary">Impuestos incluidos</small>
+        </div>
+        <!-- plataforma -->
+        <p class="text-body mb-4"><strong>Disponible en:</strong>{{juego.plataforma}}</p>
+
+        <!-- botones de seleccion principales -->
+        <div class="d-flex flex-column flex-sm-row gap-3 mb-5">
+            <a href="{% url 'carrito:agregar' juego.id %}"
+                class="btn btn-success btn-md rounded-3 shadow-sm d-flex aligs-items-center justify-content-center">
+                <i class="fas fa-shopping-card me-2"></i> Añadir carrito
+                
+            </a>
+            <button
+                    class="btn btn-outline-danger btn-md rounded-3 shadow-sm d-flex aligs-items-center justify-content-center">
+                    <i class="fas fa-heart me-2"></i>Agregar a fovorito
+            </button>
+            <a href="{% url 'catalogo:lista_juegos' %}"
+                class="btn btn-secondary btn-md rounded-3 shadow-sm d-flex aligs-items-center justify-content-center mt-3 mt-sm-0">
+                <i class="fas fa-arrow-left me-2"></i>Volver al catálogo
+                
+            </a>
+
+        </div>
+        <!-- detalle del producto -->
+         <div class="mb-5">
+            <h5 class="fw-semibold mb-3 text-body" >Detalle del producto</h5>
+            <p class="mb-1 text-body"><strong>Plataforma:</strong>{{juego.plataforma}}</p>
+            {% if juego.descripicon %}
+            <p class="text-body text-body-secondary">{{juego.descripicon}}</p>
+            {% endif %}
+
+         </div>
+         <!-- reseñas -->
+          <div>
+            <h4 class="fw-semibold mb-3 text-body">Reseñas</h4>
+            <p class="text-body text-body-secondary fst-italic">Seccion de reseñas de implementacion</p>
+
+          </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %}Tienda de Videojuegos | Inicio {%endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-body">Bienvenido a la Tienda de Videosjuegos</h1>
+    <p class="text-body">Explora de nuestros catálogos y disfruta de nuestras ofertas.</p>
+    <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="img-fluid my-4">
+    <div class="alert alert-primary">!Nueva coleccion de videosjuegos dsiponible esta semana</div>
+    <div class="alert alert-warning">Recuerda revisar las restricciones de edad para algunos titulos</div>
+    <div class="alert alert-warning">Algunos productos, tienen stock limitado, !Apresúrate¡</div>
+
+</div>
+
+{% endblock %}

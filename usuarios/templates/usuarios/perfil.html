@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %}Perfil{%endblock %}
+
+{% block content %}
+<br>
+<h2 class="text-body">Bienvenido, {{user.usarname}}</h2>
+<p class="text-body">Email:{{user.email}}</p>
+<a href="{% url 'logout' %}" class="btn btn-danger">Cerrar sesion</a>
+
+{% endblock %}

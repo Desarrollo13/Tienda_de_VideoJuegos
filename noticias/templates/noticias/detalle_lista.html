@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ noticia.titulo }}{% endblock %}
+
+{% block content %}
+<br>
+<article class="text-start">
+
+  <h1 class="fw-bold mb-3">{{ noticia.titulo }}</h1>
+  <p class="text-muted small">
+    Publicado el {{ noticia.creada|date:"d/m/Y" }}
+  </p>
+
+  {% if noticia.imagen %}
+  <img src="{{ noticia.imagen.url }}" class="img-fluid rounded mb-4">
+  {% endif %}
+
+  <div class="fs-5">
+    {{ noticia.contenido|linebreaks }}
+  </div>
+
+  <a href="{% url 'noticias:lista' %}" class="btn btn-outline-secondary mt-4">
+    ← Volver a noticias
+  </a>
+
+</article>
+{% endblock %}
