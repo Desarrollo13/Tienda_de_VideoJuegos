@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 
 
 # ruta base del proyecto
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -151,3 +152,14 @@ LOGOUT_REDIRECT_URL='login'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+STATIC_URL = '/static/'
+
+# 🔴 ESTO ES OBLIGATORIO EN PRODUCCIÓN
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# (opcional, pero recomendado)
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
