@@ -16,37 +16,27 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
-# ruta base del proyecto
+
+
+
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Determinar entorno:desarrollo o produccion
-# En PythonAnywhere definir DJANGO_PRODUCTION=1 en consola o WSGI
-# IS_PRODUCTION = os.environ.get('DJANGO_PRODUCTION') == '1'
-# Cargar variables de entorno SOLO en producción
-# -----------------------------------
-# Cargar variables de entorno
-# -----------------------------------
-
+# ¿Estamos en producción?
 IS_PRODUCTION = os.getenv("DJANGO_PRODUCTION") == "1"
 
+# Cargar .env correcto
 if IS_PRODUCTION:
     load_dotenv(os.path.expanduser("~/.env.production"))
 else:
     load_dotenv(BASE_DIR / ".env.development")
 
-# seguridad y depuracion
-SECRET_KEY = os.getenv('SECRET_KEY')
 
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG") == "True"
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "django-insecure-^bz)#%hdm-@ow4=p5k54)rn%+aivz)(njd3np_+5!20s_=62eo"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')=='True'
-
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 
 
