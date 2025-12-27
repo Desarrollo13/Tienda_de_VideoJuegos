@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
+
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 
@@ -29,7 +30,8 @@ ENV_FILE= Path(__file__).resolve().parent.parent.parent/('.env.production' if IS
 load_dotenv(ENV_FILE)
 
 # seguridad y depuracion
-SECRET_KEY=os.getenv('SECRET_KEY ')
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-^bz)#%hdm-@ow4=p5k54)rn%+aivz)(njd3np_+5!20s_=62eo"
@@ -138,8 +140,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
-STATICFILES_DIRS=[BASE_DIR / 'static']
+# STATIC_URL = "static/"
+# STATICFILES_DIRS=[BASE_DIR / 'static']
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -154,12 +163,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-STATIC_URL = '/static/'
-
-# 🔴 ESTO ES OBLIGATORIO EN PRODUCCIÓN
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# (opcional, pero recomendado)
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
