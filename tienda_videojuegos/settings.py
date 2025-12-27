@@ -15,28 +15,20 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-
-
-
-
-
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ¿Estamos en producción?
+# ¿Producción?
 IS_PRODUCTION = os.getenv("DJANGO_PRODUCTION") == "1"
 
-# Cargar .env correcto
+# Cargar variables de entorno
 if IS_PRODUCTION:
-    load_dotenv(os.path.expanduser("~/.env.production"))
+    load_dotenv("/home/cristanmesa13/.env.production")
 else:
     load_dotenv(BASE_DIR / ".env.development")
-
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "True"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
-
 
 
 
@@ -105,16 +97,15 @@ WSGI_APPLICATION = "tienda_videojuegos.wsgi.application"
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('DATABASE_ENGINE'),
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATABASE_PORT', '3306'),
+    "default": {
+        "ENGINE": os.getenv("DATABASE_ENGINE"),
+        "NAME": os.getenv("DATABASE_NAME"),
+        "USER": os.getenv("DATABASE_USER"),
+        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
+        "HOST": os.getenv("DATABASE_HOST"),
+        "PORT": os.getenv("DATABASE_PORT", "3306"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
