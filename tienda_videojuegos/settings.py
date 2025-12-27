@@ -95,16 +95,29 @@ WSGI_APPLICATION = "tienda_videojuegos.wsgi.application"
 # ---------------------------------------------------
 # Base de datos
 # ---------------------------------------------------
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('DATABASE_ENGINE'),
+#         'NAME': os.getenv('DATABASE_NAME'),
+#         'USER': os.getenv('DATABASE_USER', ''),
+#         'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
+#         'HOST': os.getenv('DATABASE_HOST', ''),
+#         'PORT': os.getenv('DATABASE_PORT', ''),
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DATABASE_ENGINE'),
         'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER', ''),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
-        'HOST': os.getenv('DATABASE_HOST', ''),
-        'PORT': os.getenv('DATABASE_PORT', ''),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT', '3306'),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
