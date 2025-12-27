@@ -25,12 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # En PythonAnywhere definir DJANGO_PRODUCTION=1 en consola o WSGI
 # IS_PRODUCTION = os.environ.get('DJANGO_PRODUCTION') == '1'
 # Cargar variables de entorno SOLO en producción
-if os.getenv("DJANGO_PRODUCTION") == "1":
-    load_dotenv(os.path.expanduser("~/.env.production"))
+# -----------------------------------
+# Cargar variables de entorno
+# -----------------------------------
 
-# CARGAR VARIABLES DE ENTORNO
-ENV_FILE= Path(__file__).resolve().parent.parent.parent/('.env.production' if IS_PRODUCTION else '.env.development')
-load_dotenv(ENV_FILE)
+IS_PRODUCTION = os.getenv("DJANGO_PRODUCTION") == "1"
+
+if IS_PRODUCTION:
+    load_dotenv(os.path.expanduser("~/.env.production"))
+else:
+    load_dotenv(BASE_DIR / ".env.development")
 
 # seguridad y depuracion
 SECRET_KEY = os.getenv('SECRET_KEY')
