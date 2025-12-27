@@ -23,7 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Determinar entorno:desarrollo o produccion
 # En PythonAnywhere definir DJANGO_PRODUCTION=1 en consola o WSGI
-IS_PRODUCTION = os.environ.get('DJANGO_PRODUCTION') == '1'
+# IS_PRODUCTION = os.environ.get('DJANGO_PRODUCTION') == '1'
+# Cargar variables de entorno SOLO en producción
+if os.getenv("DJANGO_PRODUCTION") == "1":
+    load_dotenv(os.path.expanduser("~/.env.production"))
 
 # CARGAR VARIABLES DE ENTORNO
 ENV_FILE= Path(__file__).resolve().parent.parent.parent/('.env.production' if IS_PRODUCTION else '.env.development')
