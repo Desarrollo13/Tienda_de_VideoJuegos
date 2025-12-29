@@ -65,7 +65,7 @@
 
 
           <!-- 🔍 BUSCADOR -->
-          <form class="d-flex" role="search" action="{% url 'buscar_juegos' %}" method="get">
+          <form class="d-flex" role="search" action="{% url 'buscador:buscar_juegos' %}" method="get">
             <input class="form-control me-2" name="q" type="search" placeholder="Buscar juegos..."
               value="{{ request.GET.q|default:'' }}" />
             <button class="btn btn-outline-light" type="submit">
