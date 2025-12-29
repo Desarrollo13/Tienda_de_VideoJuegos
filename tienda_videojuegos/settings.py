@@ -34,9 +34,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = os.getenv(
-    'ALLOWED_HOSTS',
-    'cristanmesa13.pythonanywhere.com,localhost,127.0.0.1'
-).split(',')
+    "ALLOWED_HOSTS",
+    "cristanmesa13.pythonanywhere.com"
+).split(",")
 
 
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
