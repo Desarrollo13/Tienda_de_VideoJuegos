@@ -5,21 +5,32 @@
 
 {% block content %}
 <br>
-<h1 class="mb-4 fw-bold">Noticias de Videojuegos</h1>
+<h1 class="mb-4 fw-bold text-center">Noticias de Videojuegos</h1>
 
 <div class="row g-4">
   {% for noticia in noticias %}
-  <div class="col-md-6">
-    <div class="card h-100 shadow-sm">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm bg-dark text-light">
 
       {% if noticia.imagen %}
-      <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="{{ noticia.titulo }}">
+      <img src="{{ noticia.imagen.url }}"
+           class="card-img-top noticia-img"
+           alt="{{ noticia.titulo }}">
+      {% else %}
+      <img src="{% static 'img/noticia_default.jpg' %}"
+           class="card-img-top noticia-img"
+           alt="Imagen por defecto">
       {% endif %}
 
-      <div class="card-body">
+      <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{ noticia.titulo }}</h5>
-        <p class="card-text text-muted">{{ noticia.resumen }}</p>
-        <a href="{% url 'noticias:detalle' noticia.slug %}" class="btn btn-success btn-sm">
+
+        <p class="card-text text-secondary small">
+          {{ noticia.resumen|truncatechars:120 }}
+        </p>
+
+        <a href="{% url 'noticias:detalle' noticia.slug %}"
+           class="btn btn-success btn-sm mt-auto">
           Leer más
         </a>
       </div>

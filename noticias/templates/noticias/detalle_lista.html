@@ -4,24 +4,40 @@
 
 {% block content %}
 <br>
-<article class="text-start">
 
-  <h1 class="fw-bold mb-3">{{ noticia.titulo }}</h1>
-  <p class="text-muted small">
+<article class="text-start mx-auto" style="max-width: 900px;">
+
+  <!-- TÍTULO -->
+  <h1 class="fw-bold mb-2">{{ noticia.titulo }}</h1>
+
+  <!-- FECHA -->
+  <p class="text-secondary small mb-4">
+    <i class="fa-regular fa-calendar me-1"></i>
     Publicado el {{ noticia.creada|date:"d/m/Y" }}
   </p>
 
+  <!-- IMAGEN -->
   {% if noticia.imagen %}
-  <img src="{{ noticia.imagen.url }}" class="img-fluid rounded mb-4">
+  <div class="mb-4">
+    <img
+      src="{{ noticia.imagen.url }}"
+      class="img-fluid rounded shadow noticia-detalle-img"
+      alt="{{ noticia.titulo }}"
+    >
+  </div>
   {% endif %}
 
-  <div class="fs-5">
+  <!-- CONTENIDO -->
+  <div class="fs-5 lh-lg text-body">
     {{ noticia.contenido|linebreaks }}
   </div>
 
-  <a href="{% url 'noticias:lista' %}" class="btn btn-outline-secondary mt-4">
-    ← Volver a noticias
-  </a>
+  <!-- VOLVER -->
+  <div class="mt-5">
+    <a href="{% url 'noticias:lista' %}" class="btn btn-outline-secondary">
+      ← Volver a noticias
+    </a>
+  </div>
 
 </article>
 {% endblock %}

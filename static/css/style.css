@@ -57,6 +57,18 @@ body {
   font-size: 0.65rem;
 }
 
+.noticia-img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+.noticia-detalle-img {
+  max-height: 420px;
+  width: 100%;
+  object-fit: cover;
+}
+
+
 /* parte responsi para la tabla del carrito  escritorio*/
 @media (min-width:769px) {
     .carrito-table-wrap .table{
