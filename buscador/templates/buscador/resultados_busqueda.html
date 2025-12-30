@@ -15,7 +15,7 @@ Resultados de búsqueda
       {% for juego in lista_juegos %}
         <div class="col-md-4 mb-3">
           <div class="card h-100 shadow-sm">
-            <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none text-body">
+            <a href="{% url 'catalogo:detalle_juego' juego.pk %}" class="text-decoration-none text-body">
               <img
               src="{% static 'img/portadas/'|add:juego.imagen %}"
               class="card-img-top"
