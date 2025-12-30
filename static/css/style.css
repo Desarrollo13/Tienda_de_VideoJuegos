@@ -67,6 +67,15 @@ body {
   width: 100%;
   object-fit: cover;
 }
+/* estilos para la lista de imagenes */
+.img-juego {
+  width: 100%;
+  height: 250px;        /* tamaño fijo */
+  object-fit: cover;   /* recorta sin deformar */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
 
 
 /* parte responsi para la tabla del carrito  escritorio*/
@@ -81,13 +90,7 @@ body {
     }
     
 }
-/* responsi para Table y Movil */
-/* @media (max-width:769px) {
-    .table thead{
-        display: none;
-    }
 
-} */
 
 /* ===============================
    RESPONSIVE TABLET + MOBILE
