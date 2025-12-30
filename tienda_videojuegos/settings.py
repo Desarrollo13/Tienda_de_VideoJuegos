@@ -24,7 +24,9 @@ IS_PRODUCTION= os.environ.get('DJANGO_PRODUCTION') == '1'
 
 
 # Cargar variables de entorno
-ENV_FILE= Path(__file__).resolve().parent.parent.parent / ('.env.production' if IS_PRODUCTION else '.env.development')
+# ENV_FILE= Path(__file__).resolve().parent.parent.parent / ('.env.production' if IS_PRODUCTION else '.env.development')
+ENV_FILE = BASE_DIR / ('.env.production' if IS_PRODUCTION else '.env.development')
+
 load_dotenv(ENV_FILE)
 
 # seguridad y depuracion
