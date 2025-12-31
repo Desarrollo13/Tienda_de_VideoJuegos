@@ -16,11 +16,13 @@ Resultados de búsqueda
         <div class="col-md-4 mb-3">
           <div class="card h-100 shadow-sm">
             <a href="{% url 'catalogo:detalle_juego' juego.pk %}" class="text-decoration-none text-body">
-              <img
+              <!-- <img
               src="{% static 'img/portadas/'|add:juego.imagen %}"
               class="card-img-top"
               alt="{{ juego.nombre }}"
-            />
+            /> -->
+            <img src="{{ juego.imagen.url }}" class="card-img-top img-juego" alt="{{ juego.nombre }}">
+
             <div class="card-body text-start">
               <h5 class="card-title">{{ juego.nombre }}</h5>
               <p class="card-text">{{ juego.plataforma }}</p>
