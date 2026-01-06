@@ -16,12 +16,14 @@ Resultados de búsqueda
         <div class="col-md-4 mb-3">
           <div class="card h-100 shadow-sm">
             <a href="{% url 'catalogo:detalle_juego' juego.pk %}" class="text-decoration-none text-body">
-              <!-- <img
-              src="{% static 'img/portadas/'|add:juego.imagen %}"
-              class="card-img-top"
-              alt="{{ juego.nombre }}"
-            /> -->
+              
+            
+            {% if juego.imagen %}
             <img src="{{ juego.imagen.url }}" class="card-img-top img-juego" alt="{{ juego.nombre }}">
+            {% else %}
+            <img src="{% static 'img/no-image.png' %}" class="card-img-top img-juego" alt="Sin imagen">
+            {% endif %}
+
 
             <div class="card-body text-start">
               <h5 class="card-title">{{ juego.nombre }}</h5>

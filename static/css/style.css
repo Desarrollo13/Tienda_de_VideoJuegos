@@ -81,12 +81,23 @@ body {
     height: 70px;
     object-fit: cover;
 }
+/* estilos boton git */
+[data-bs-theme="dark"] .github-btn {
+    border-color: #fff;
+    color: #fff;
+}
+
+[data-bs-theme="dark"] .github-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
 
 
 
 
 /* parte responsi para la tabla del carrito  escritorio*/
 @media (min-width:769px) {
+    
     .carrito-table-wrap .table{
         border-radius: 0.75rem;
         overflow: hidden;
@@ -103,6 +114,13 @@ body {
    RESPONSIVE TABLET + MOBILE
    =============================== */
 @media (max-width: 768px) {
+    .navbar .bi-cart3 {
+        margin-right: 12px;
+    }
+
+    .navbar .dropdown {
+        margin-top: 8px;
+    }
 
     /* Ocultar encabezados */
     .carrito-table-wrap thead {

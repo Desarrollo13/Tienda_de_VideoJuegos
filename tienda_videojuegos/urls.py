@@ -24,14 +24,19 @@ urlpatterns = [
     path('', include('home.urls')),
     path('catalogo/', include(('catalogo.urls', 'catalogo'), namespace='catalogo')
 ),
-
-
     
     # path('catalogo/',include('catalogo.urls')),
     path('buscador/',include('buscador.urls')),
     path('usuarios/', include('usuarios.urls')),
     path('carrito/',include('carrito.urls')),
     path('noticias/',include('noticias.urls')),
+    # agregados fuera de la tienda
+
+    # conectar la api al proyecto
+    path('api/', include('api.urls')),
+    # portafolio personal
+    path('portfolio/', include('portfolio.urls')),
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

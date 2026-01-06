@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio | Cristian Mesa{% endblock %}
+
+{% block content %}
+<br><br>
+
+<!-- HERO -->
+<section class="text-center mb-5">
+    <h1 class="fw-bold display-5">👨‍💻 Cristian Mesa</h1>
+    <p class="lead mt-3">
+        Ingeniero en Sistemas · Django Developer · SAP
+    </p>
+
+    <p class="text-body-secondary">
+        Desarrollo aplicaciones web robustas, escalables y listas para producción.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="{% url 'catalogo:lista_juegos' %}" class="btn btn-success px-4">
+            Ver proyecto
+        </a>
+
+        <a href="https://github.com/Desarrollo13/Tienda_de_VideoJuegos"
+           target="_blank"
+           class="btn btn-outline-secondary px-4 github-btn">
+            GitHub
+        </a>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<!-- STACK -->
+<section class="mb-5 text-center">
+    <h3 class="fw-semibold mb-4">🧰 Stack tecnológico</h3>
+
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+        <span class="badge bg-dark">Python</span>
+        <span class="badge bg-dark">Django</span>
+        <span class="badge bg-dark">Django REST Framework</span>
+        <span class="badge bg-dark">JWT</span>
+        <span class="badge bg-dark">MySQL</span>
+        <span class="badge bg-dark">Bootstrap</span>
+        <span class="badge bg-dark">Git</span>
+        <span class="badge bg-dark">Linux</span>
+        <span class="badge bg-dark">SAP</span>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<!-- PROYECTO -->
+<section class="mb-5">
+    <h3 class="fw-semibold text-center mb-4">🚀 Proyecto destacado</h3>
+
+    <div class="card shadow-sm mx-auto" style="max-width: 650px;">
+        <div class="card-body text-center">
+            <h5 class="card-title fw-bold">Tienda de Videojuegos</h5>
+
+            <p class="card-text text-body-secondary">
+                E-commerce desarrollado con Django y MySQL.
+                Incluye catálogo, carrito de compras, autenticación,
+                buscador, panel administrativo y deploy en producción.
+            </p>
+
+            <!-- <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="https://cristanmesa13.pythonanywhere.com"
+                   target="_blank"
+                   class="btn btn-success btn-lg">
+                    Demo en vivo
+                </a>
+
+                <a href="https://github.com/Desarrollo13/Tienda_de_VideoJuegos"
+                   target="_blank"
+                   class="btn btn-outline-secondary github-btn">
+                    Código
+                </a>
+            </div> -->
+            <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+
+    <div class="text-center">
+        <a href="https://cristanmesa13.pythonanywhere.com" target="_blank" class="btn btn-success btn-lg w-100">
+            Demo en vivo
+        </a>
+    </div>
+    
+    <div class="text-center">
+        <a href="https://github.com/Desarrollo13/Tienda_de_VideoJuegos" target="_blank"
+            class="btn btn-outline-secondary btn-lg w-100">
+            Código
+        </a>
+    </div>
+    
+    <div class="text-center">
+        <a href="{% url 'portfolio:api_demo' %}" class="btn btn-outline-info btn-lg w-100">
+            API REST
+        </a>
+        <small class="d-block text-body-secondary mt-1">
+            DRF · Fetch API · JSON
+        </small>
+    </div>
+    
+    </div>
+
+
+        </div>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<!-- API REST -->
+<section class="mb-5">
+    <h3 class="fw-semibold text-center mb-4">🔌 API REST (Django REST Framework)</h3>
+
+    <div class="card shadow-sm mx-auto" style="max-width: 700px;">
+        <div class="card-body">
+            <p class="text-body-secondary">
+                La aplicación expone una API REST construida con Django REST Framework.
+                Los endpoints públicos permiten consultar el catálogo de juegos,
+                mientras que las operaciones sensibles están protegidas con JWT.
+            </p>
+
+            <ul class="text-body-secondary small">
+                <li>✔ Endpoints RESTful</li>
+                <li>✔ Autenticación JWT (access / refresh)</li>
+                <li>✔ Permisos con IsAuthenticatedOrReadOnly</li>
+                <li>✔ Documentación Swagger / OpenAPI</li>
+            </ul>
+
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="/api/juegos/" target="_blank" class="btn btn-outline-primary">
+                    Ver API Juegos
+                </a>
+
+                <a href="/api/api/docs/" target="_blank" class="btn btn-outline-secondary">
+                    Swagger UI
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<!-- JWT -->
+<section class="mb-5">
+    <h3 class="fw-semibold text-center mb-4">🔐 Seguridad con JWT</h3>
+
+    <div class="card shadow-sm mx-auto" style="max-width: 700px;">
+        <div class="card-body">
+            <p class="text-body-secondary">
+                Ejemplo de autenticación utilizando JSON Web Tokens.
+                El backend emite tokens de acceso y refresco para proteger
+                operaciones de escritura.
+            </p>
+
+            <pre class="bg-dark text-light p-3 rounded small text-start">
+POST /api/token/
+{
+  "username": "usuario",
+  "password": "password"
+}
+            </pre>
+
+            <pre class="bg-dark text-light p-3 rounded small text-start mt-2">
+Authorization: Bearer &lt;access_token&gt;
+            </pre>
+        </div>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<!-- CONTACTO -->
+<section class="text-center">
+    <h4 class="fw-semibold mb-3">📩 Contacto</h4>
+
+    <p class="text-body-secondary">
+        ¿Querés ver más o charlar sobre una oportunidad?
+    </p>
+
+    <a href="{% url 'contacto' %}" class="btn btn-outline-secondary px-4">
+        Contactame
+    </a>
+</section>
+
+{% endblock %}

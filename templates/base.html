@@ -19,115 +19,111 @@
 
 <body class="bg-body text-body">
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
-      <div class="container">
-        <!-- 🔄 BOTÓN DARK / LIGHT (IZQUIERDA) -->
-        <button id="toggle-theme" class="btn btn-outline-light rounded-circle me-3" title="Cambiar tema" type="button">
-          <i class="fa-solid fa-circle-half-stroke"></i>
-        </button>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+  <div class="container">
 
-        <!-- 🖼 LOGO -->
-        <a class="navbar-brand d-flex align-items-center gap-2 me-4" href="{% url 'home' %}">
-          <img src="{% static 'img/logo.jpg' %}" alt="Logo" width="40" height="40" class="rounded" />
-          <span class="fw-semibold">PF Gaming</span>
+    <!-- 🔄 BOTÓN DARK / LIGHT -->
+    <button id="toggle-theme"
+            class="btn btn-outline-light rounded-circle me-3"
+            title="Cambiar tema"
+            type="button">
+      <i class="fa-solid fa-circle-half-stroke"></i>
+    </button>
+
+    <!-- 🖼 LOGO -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+      <img src="{% static 'img/logo.jpg' %}" alt="Logo" width="40" height="40" class="rounded" />
+      <span class="fw-semibold">PF Gaming</span>
+    </a>
+
+    <!-- 🍔 BOTÓN HAMBURGUESA -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- CONTENIDO -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <!-- 📂 MENÚ IZQUIERDA -->
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'catalogo:lista_juegos' %}">Catálogo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'noticias:lista' %}">Noticias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'portfolio:home' %}">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+        </li>
+      </ul>
+
+      <!-- 👉 TODO LO DE LA DERECHA -->
+      <div class="d-flex align-items-center ms-auto gap-3">
+
+        <!-- 🔍 BUSCADOR -->
+        <form class="d-flex" role="search"
+              action="{% url 'buscador:buscar_juegos' %}" method="get">
+          <input class="form-control form-control-sm me-2"
+                 name="q"
+                 type="search"
+                 placeholder="Buscar juegos..."
+                 value="{{ request.GET.q|default:'' }}">
+          <button class="btn btn-outline-light btn-sm" type="submit">
+            Buscar
+          </button>
+        </form>
+
+        <!-- 🛒 CARRITO -->
+        <a href="{% url 'carrito:ver_carrito' %}" class="nav-link text-light position-relative">
+          <i class="fa-solid fa-cart-shopping fa-lg"></i>
+          {% if carrito_total_items > 0 %}
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
+            {{ carrito_total_items }}
+          </span>
+          {% endif %}
         </a>
 
-        <!-- 🍔 BOTÓN HAMBURGUESA -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- 👤 LOGIN / USUARIO -->
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+          <a class="nav-link dropdown-toggle text-light"
+             href="#"
+             role="button"
+             data-bs-toggle="dropdown">
+            <i class="fa-solid fa-user me-1"></i> {{ user.username }}
+          </a>
 
-        <!-- MENÚ + BUSCADOR -->
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <!-- 📂 MENÚ IZQUIERDA -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">
-                Inicio
-              </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="{% url 'perfil' %}">Mi perfil</a>
             </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'catalogo:lista_juegos' %}">
-                Catálogo
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'noticias:lista' %}">Noticias</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'contacto' %}"> Contacto </a>
-            </li>
-          </ul>
-
-
-
-          <!-- 🔍 BUSCADOR -->
-          <form class="d-flex" role="search" action="{% url 'buscador:buscar_juegos' %}" method="get">
-            <input class="form-control me-2" name="q" type="search" placeholder="Buscar juegos..."
-              value="{{ request.GET.q|default:'' }}" />
-            <button class="btn btn-outline-light" type="submit">
-              Buscar
-            </button>
-          </form>
-
-          <!-- 🛒 CARRITO -->
-          <ul class="navbar-nav me-3">
-            <li class="nav-item position-relative">
-              <a href="{% url 'carrito:ver_carrito' %}" class="nav-link text-light">
-                <i class="fa-solid fa-cart-shopping fa-lg"></i>
-
-                {% if carrito_total_items > 0 %}
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
-                  {{ carrito_total_items }}
-                </span>
-                {% endif %}
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                Cerrar sesión
               </a>
             </li>
           </ul>
-
-
-          <!-- 👤 LOGIN / USUARIO -->
-          <ul class="navbar-nav align-items-center me-4">
-            {% if user.is_authenticated %}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="fa-solid fa-user me-1"></i> {{ user.username }}
-              </a>
-
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a class="dropdown-item" href="{% url 'perfil' %}">Mi perfil</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item text-danger" href="{% url 'logout' %}">
-                    Cerrar sesión
-                  </a>
-                </li>
-              </ul>
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{% url 'login' %}">
-                Iniciar sesión
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{% url 'registro' %}">
-                Registrarse
-              </a>
-            </li>
-            {% endif %}
-          </ul>
-
         </div>
+        {% else %}
+        <a class="nav-link text-light" href="{% url 'login' %}">Iniciar sesión</a>
+        <a class="nav-link text-light" href="{% url 'registro' %}">Registrarse</a>
+        {% endif %}
+
       </div>
-    </nav>
+    </div>
+  </div>
+</nav>
+
+
   </header>
 
   <!-- para la notificaciones toast -->

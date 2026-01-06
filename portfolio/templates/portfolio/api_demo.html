@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}API Demo | Juegos{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-4">
+        🎮 Juegos desde API REST
+    </h1>
+
+    <p class="text-center text-muted mb-5">
+        Datos consumidos desde <code>/api/juegos/</code> usando Fetch API
+    </p>
+
+    <div class="row" id="juegos-container">
+        <!-- Cards dinámicas -->
+    </div>
+</div>
+
+<script>
+fetch("/api/juegos/")
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById("juegos-container");
+
+        data.forEach(juego => {
+            container.innerHTML += `
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="${juego.imagen}" 
+                             class="card-img-top"
+                             alt="${juego.nombre}">
+                        <div class="card-body">
+                            <h5 class="card-title">${juego.nombre}</h5>
+                            <p class="card-text">
+                                Plataforma: ${juego.plataforma}
+                            </p>
+                            <p class="fw-bold">$${juego.precio}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+</script>
+{% endblock %}
