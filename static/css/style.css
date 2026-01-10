@@ -233,19 +233,20 @@ body {
         justify-content: center;
     }
 
-     /* Fuerza visibilidad de secciones */
+    body,
+    main,
+    .container,
+    .content,
     section {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
     }
 
-    /* Corrige cards API / JWT */
     .card {
         overflow: visible !important;
     }
 
-    /* Contenedor de código */
     .api-code,
     pre {
         max-width: 100% !important;
