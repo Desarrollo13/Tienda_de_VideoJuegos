@@ -138,7 +138,17 @@ body {
     }
 }
 
+/* ===== API / CODE BLOCKS RESPONSIVE ===== */
+.api-code {
+    max-width: 100%;
+    overflow-x: auto;
+}
 
+.api-code pre {
+    white-space: pre-wrap;      /* permite saltos de línea */
+    word-break: break-word;     /* corta palabras largas */
+    font-size: 0.85rem;
+}
 
 
 
@@ -222,7 +232,32 @@ body {
     .carrito-table-wrap tbody td[data-label="Acciones"] {
         justify-content: center;
     }
+
+    /* ========================= */
+    /* API REST / JWT (MOBILE)   */
+    /* ========================= */
+
+    .api-code {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .api-code pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 0.85rem;
+    }
+
+    section {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    hr {
+        margin: 2rem 0;
+    }
 }
+
 
 /* =========================================================
    TOASTS (NOTIFICACIONES FLOTANTES) – VISTOSOS
