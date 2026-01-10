@@ -233,28 +233,26 @@ body {
         justify-content: center;
     }
 
-    /* ========================= */
-    /* API REST / JWT (MOBILE)   */
-    /* ========================= */
-
-    .api-code {
-        max-width: 100%;
-        overflow-x: auto;
-    }
-
-    .api-code pre {
-        white-space: pre-wrap;
-        word-break: break-word;
-        font-size: 0.85rem;
-    }
-
+     /* Fuerza visibilidad de secciones */
     section {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
-    hr {
-        margin: 2rem 0;
+    /* Corrige cards API / JWT */
+    .card {
+        overflow: visible !important;
+    }
+
+    /* Contenedor de código */
+    .api-code,
+    pre {
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+        font-size: 0.85rem;
     }
 }
 
