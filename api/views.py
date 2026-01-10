@@ -41,7 +41,7 @@ class JuegoViewSet(viewsets.ModelViewSet):
     - GET: público
     - POST: solo autenticados (JWT)
     """
-    queryset = Juego.objects.all()
+    queryset = Juego.objects.all().order_by('-id')
     serializer_class = JuegoSerializer
 
     def get_permissions(self):

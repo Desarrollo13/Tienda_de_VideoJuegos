@@ -54,3 +54,97 @@ document.addEventListener("DOMContentLoaded", function(){
         toast.show();
     })
 })
+// Funcion de Fecht
+
+//  document.addEventListener("DOMContentLoaded", function () {
+
+//     const container = document.getElementById("juegos-container");
+
+//     if (!container) {
+//         console.warn("No existe #juegos-container en esta página");
+//         return;
+//     }
+
+//     fetch("/api/juegos/")
+//         .then(response => response.json())
+//         .then(data => {
+
+//             container.innerHTML = "";
+
+//             data.results.forEach(juego => {
+
+//                 const imagen = juego.imagen || DEFAULT_IMAGE;
+
+//                 container.innerHTML += `
+//                     <div class="col-12 col-md-4 mb-4">
+//                         <div class="card h-100 shadow-sm">
+//                             <img src="${imagen}" class="card-img-top" alt="${juego.nombre}">
+//                             <div class="card-body">
+//                                 <h5>${juego.nombre}</h5>
+//                                 <p>${juego.plataforma}</p>
+//                                 <strong>$${juego.precio}</strong>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 `;
+//             });
+//         })
+//         .catch(err => console.error("Error fetch:", err));
+// });
+
+
+let currentPage = 1;
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const container = document.getElementById("juegos-container");
+    const btnPrev = document.getElementById("btn-prev");
+    const btnNext = document.getElementById("btn-next");
+
+    if (!container) return;
+
+    function cargarJuegos(page = 1) {
+        fetch(`/api/juegos/?page=${page}`, { cache: "no-store" })
+            .then(res => res.json())
+            .then(data => {
+
+                container.innerHTML = "";
+
+                data.results.forEach(juego => {
+                    const imagen = juego.imagen || DEFAULT_IMAGE;
+
+                    container.innerHTML += `
+                        <div class="col-12 col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <img src="${imagen}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5>${juego.nombre}</h5>
+                                    <p>${juego.plataforma}</p>
+                                    <strong>$${juego.precio}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // estado botones
+                btnPrev.disabled = !data.previous;
+                btnNext.disabled = !data.next;
+
+                currentPage = page;
+            })
+            .catch(err => console.error("Error fetch:", err));
+    }
+
+    btnPrev.addEventListener("click", () => {
+        if (currentPage > 1) {
+            cargarJuegos(currentPage - 1);
+        }
+    });
+
+    btnNext.addEventListener("click", () => {
+        cargarJuegos(currentPage + 1);
+    });
+
+    cargarJuegos();
+});

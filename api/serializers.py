@@ -11,3 +11,8 @@ class JuegoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Juego
         fields = "__all__"
+    def get_imagen(self, obj):
+        request = self.context.get("request")
+        if obj.imagen:
+            return request.build_absolute_uri(obj.imagen.url)
+        return None    
